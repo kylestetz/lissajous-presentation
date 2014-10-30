@@ -1,0 +1,19 @@
+{% for slideObject in slides -%}
+{%- if slideObject.single -%}
+<section data-markdown>
+  <script type="text/template">
+  {{ slideObject.slide }}
+  </script>
+</section>
+{%- else -%}
+<section>
+  {% for slide in slideObject.slides -%}
+    <section data-markdown>
+      <script type="text/template">
+      {{ slide }}
+      </script>
+    </section>
+  {%- endfor -%}
+</section>
+{%- endif -%}
+{% endfor %}
